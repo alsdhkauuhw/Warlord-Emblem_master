@@ -1,0 +1,11 @@
+{
+  "modid": "BestRobot",
+  "name": "The Best Robot",
+  "author_list": ["大胜利"],
+  "credits": "The Best Robot",
+  "description": "尼奥是MVP!鸡煲就是躺赢狗？",
+  "version": "0.0.1",
+  "sts_version": "01-27-2020",
+  "mts_version": "3.16.0",
+  "dependencies": ["basemod", "stslib"]
+}
