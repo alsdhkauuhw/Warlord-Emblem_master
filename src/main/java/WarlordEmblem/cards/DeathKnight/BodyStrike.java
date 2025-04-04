@@ -48,13 +48,15 @@ public class BodyStrike extends AbstractDKCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         int times = 3;
-        if (hasBloodRealm())
+        if (hasBloodRealm()) {
             times = 3 + AbstractDKCard.RealmMagicNumber;
+        }
 
-        for (int i = 0; i < times; i++)
+        for (int i = 0; i < times; i++) {
             AbstractDungeon.actionManager
                     .addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
                             AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        }
     }
 
     public AbstractCard makeCopy() {

@@ -3,6 +3,7 @@ package WarlordEmblem.cards.theBestRobot;
 import WarlordEmblem.WarlordEmblem;
 import WarlordEmblem.helpers.CardNameHelper;
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -42,18 +43,23 @@ public class oneCardTest extends CustomCard {
      * @param p 你的玩家实体类。
      * @param m 指向的怪物类。（无指向时为null，包括攻击所有敌人时）
      */
+//    @Override
+//    public void use(AbstractPlayer p, AbstractMonster m) {
+//        AbstractDungeon.actionManager.addToBottom(
+//                new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)
+//                )
+//        );
+//    }
+
+
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(
-                        m,
-                        new DamageInfo(
-                                p,
-                                damage,
-                                DamageInfo.DamageType.NORMAL
-                        )
-                )
-        );
+        if (m != null) {
+            AbstractDungeon.actionManager.addToBottom(
+                    new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                            AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+            );
+        }
     }
 
 }
