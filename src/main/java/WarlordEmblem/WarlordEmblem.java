@@ -4,15 +4,13 @@ package WarlordEmblem;
 import WarlordEmblem.cards.Kael.*;
 import WarlordEmblem.cards.mantle.*;
 import WarlordEmblem.cards.quest.*;
-import WarlordEmblem.cards.theBestRobot.oneCardTest;
-import WarlordEmblem.character.Crowbot;
+import WarlordEmblem.cards.theBestRobot.AnswerMe;
+import WarlordEmblem.cards.theBestRobot.ThenIAskYou;
 import WarlordEmblem.character.DeathKnight;
 import WarlordEmblem.character.Kael;
-import WarlordEmblem.helpers.SecondaryMagicVariable;
 
 import WarlordEmblem.patches.AbstractPlayerEnum;
 import WarlordEmblem.patches.CardColorEnum;
-import WarlordEmblem.patches.CharacterSelectScreenPatches;
 import WarlordEmblem.potions.DKPoisonPotion;
 import WarlordEmblem.potions.RealmPotion;
 import WarlordEmblem.potions.ReserveRunePotion;
@@ -25,7 +23,6 @@ import WarlordEmblem.variables.SecondMagicNumber;
 import WarlordEmblem.variables.SecondRealmMagicNumber;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
-import basemod.abstracts.CustomRelic;
 import basemod.helpers.RelicType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -34,19 +31,12 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import basemod.BaseMod;
 import basemod.interfaces.*;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.TheCity;
-import com.megacrit.cardcrawl.dungeons.TheEnding;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.monsters.MonsterInfo;
-import com.megacrit.cardcrawl.orbs.Dark;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.relics.*;
-import com.megacrit.cardcrawl.ui.panels.energyorb.EnergyOrbBlue;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -57,7 +47,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.Random;
 
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import WarlordEmblem.cards.DeathKnight.*;
@@ -360,7 +349,8 @@ public class WarlordEmblem implements
         cards.add(new QuestCardShamanReward());
         cards.add(new QuestCardWarlockReward());
         cards.add(new QuestCardWarriorReward());
-        cards.add(new oneCardTest());
+        cards.add(new ThenIAskYou());
+        cards.add(new AnswerMe());
 
 
 
