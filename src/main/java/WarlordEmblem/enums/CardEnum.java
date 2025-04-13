@@ -7,6 +7,17 @@ import static WarlordEmblem.WarlordEmblem.MOD_ID;
 
 @Getter
 public enum CardEnum {
+    /**
+     * 1. name
+     * 2. desc
+     * 3. id
+     * 4. cost
+     * 5. path
+     * 6. CardType
+     * 7. CardColor
+     * 8. CardRarity
+     * 9. CardTarget
+     * */
     NA_WO_WEN_NI(
             "那我问你",
             "对敌方全体造成!D!点伤害，抽取一张牌，如果抽到”回答我“,当前可用费用+1",
@@ -29,7 +40,21 @@ public enum CardEnum {
             AbstractCard.CardRarity.BASIC,
             AbstractCard.CardTarget.NONE
 
-    )
+    ),
+    MVP_MODEL(
+            "MVP模式",
+            "每回合开局获得5点mvp",
+            "mvpModel",
+            3,
+            "img/cards/Quest/quest_card_hunter_reward.png",
+            AbstractCard.CardType.POWER,
+            AbstractCard.CardColor.BLUE,
+            AbstractCard.CardRarity.RARE,
+            AbstractCard.CardTarget.NONE
+
+    ),
+//    YANG_GUANG_QING_TI(
+//    )
     ;
     private final String id;
     private final String name;

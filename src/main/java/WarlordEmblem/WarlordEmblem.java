@@ -5,6 +5,7 @@ import WarlordEmblem.cards.Kael.*;
 import WarlordEmblem.cards.mantle.*;
 import WarlordEmblem.cards.quest.*;
 import WarlordEmblem.cards.theBestRobot.AnswerMe;
+import WarlordEmblem.cards.theBestRobot.MvpModel;
 import WarlordEmblem.cards.theBestRobot.ThenIAskYou;
 import WarlordEmblem.character.DeathKnight;
 import WarlordEmblem.character.Kael;
@@ -351,6 +352,7 @@ public class WarlordEmblem implements
         cards.add(new QuestCardWarriorReward());
         cards.add(new ThenIAskYou());
         cards.add(new AnswerMe());
+        cards.add(new MvpModel());
 
 
 
