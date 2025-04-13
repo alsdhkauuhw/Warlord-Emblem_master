@@ -2,7 +2,11 @@ package WarlordEmblem.cards.theBestRobot;
 
 import WarlordEmblem.enums.CardEnum;
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -49,23 +53,33 @@ public class ThenIAskYou extends CustomCard {
      */
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
+        // 对所有敌人造成伤害
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!mo.isDeadOrEscaped()) {
                 AbstractDungeon.actionManager.addToBottom(
                         new DamageAction(
                                 mo,
-                                new DamageInfo(
-                                        p,
-                                        damage,
-                                        DamageInfo.DamageType.NORMAL
-                                )
+                                new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL),
+                                AbstractGameAction.AttackEffect.SLASH_HORIZONTAL
                         )
                 );
             }
         }
 
-
+        // 抽一张牌，并判断是否是 “那我问你”，如果是则获得 1 点能量
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1, new AbstractGameAction() {
+            @Override
+            public void update() {
+                for (AbstractCard card : DrawCardAction.drawnCards) {
+                    if (CardEnum.NA_WO_WEN_NI.getId().equals(card.cardID)) {
+                        AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
+                        log.info("抽到了 那我问你，增加1点能量！");
+                    }
+                }
+                this.isDone = true;
+            }
+        }));
     }
+
 
 }

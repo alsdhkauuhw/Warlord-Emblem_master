@@ -2,8 +2,12 @@ package WarlordEmblem.cards.theBestRobot;
 
 import WarlordEmblem.enums.CardEnum;
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -48,6 +52,19 @@ public class AnswerMe extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
+        // 抽一张牌
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1, new AbstractGameAction() {
+            @Override
+            public void update() {
+                for (AbstractCard card : DrawCardAction.drawnCards) {
+                    if (CardEnum.NA_WO_WEN_NI.getId().equals(card.cardID)) {
+                        AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
+                        log.info("抽到了 那我问你，增加1点能量！");
+                    }
+                }
+                this.isDone = true;
+            }
+        }));
     }
 
 }
