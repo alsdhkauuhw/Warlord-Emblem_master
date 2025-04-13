@@ -71,9 +71,9 @@ public class ThenIAskYou extends CustomCard {
             @Override
             public void update() {
                 for (AbstractCard card : DrawCardAction.drawnCards) {
-                    if (CardEnum.NA_WO_WEN_NI.getId().equals(card.cardID)) {
+                    if (CardEnum.HUI_DA_WO.getId().equals(card.cardID)) {
                         AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
-                        log.info("抽到了 那我问你，增加1点能量！");
+                        log.info("抽到了 回答我，增加1点能量！");
                     }
                 }
                 this.isDone = true;
